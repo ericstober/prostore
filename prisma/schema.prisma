@@ -25,7 +25,7 @@ model Product {
   price       Decimal  @default(0) @db.Decimal(12, 2)
   rating      Decimal  @default(0) @db.Decimal(3, 2)
   numReviews  Int      @default(0)
-  isFeatures  Boolean  @default(false)
+  isFeatured  Boolean  @default(false)
   banner      String?
   createdAt   DateTime @default(now()) @db.Timestamp(6)
 }
