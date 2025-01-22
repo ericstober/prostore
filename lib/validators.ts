@@ -28,8 +28,8 @@ export const signInFormSchema = z.object({
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
-// Schema for singing up a user
-export const signUpFormSchema = z
+// Schema for registering a user
+export const registerUserFormSchema = z
   .object({
     name: z.string().min(3, "Name must me at leat 3 characters"),
     email: z.string().email("Invalid email address"),
