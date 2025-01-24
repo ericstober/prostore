@@ -8,3 +8,10 @@ export const signInDefaultValues = {
   email: "",
   password: "",
 };
+
+export const registerDefaultValues = {
+  name: '',
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
