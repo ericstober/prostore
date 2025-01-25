@@ -39,7 +39,6 @@ const RegisterForm = () => {
             id='name'
             name='name'
             type='text'
-            required
             autoComplete='name'
             defaultValue={registerDefaultValues.name}
           />
@@ -51,7 +50,6 @@ const RegisterForm = () => {
             id='email'
             name='email'
             type='email'
-            required
             autoComplete='email'
             defaultValue={registerDefaultValues.email}
           />
