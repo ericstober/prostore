@@ -36,7 +36,7 @@ const sampleData = {
       category: "Men's Dress Shirts",
       description: "Timeless style and premium comfort",
       images: ["/images/sample-products/p2-1.jpg", "/images/sample-products/p2-2.jpg"],
-      price: 85.90,
+      price: 85.99,
       brand: "Brooks Brothers",
       rating: 4.2,
       numReviews: 8,
