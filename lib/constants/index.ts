@@ -16,10 +16,10 @@ export const registerDefaultValues = {
   confirmPassword: "",
 };
 
-export const shippingAddressDefaultValues = {\
-  fullName: '',
-  streetAddress: '',
-  city: '',
-  postalCode: '',
-  country: '',
+export const shippingAddressDefaultValues = {
+  fullName: "",
+  streetAddress: "",
+  city: "",
+  postalCode: "",
+  country: "",
 };
