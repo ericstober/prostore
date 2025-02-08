@@ -10,8 +10,16 @@ export const signInDefaultValues = {
 };
 
 export const registerDefaultValues = {
-  name: '',
+  name: "",
   email: "",
   password: "",
   confirmPassword: "",
+};
+
+export const shippingAddressDefaultValues = {\
+  fullName: '',
+  streetAddress: '',
+  city: '',
+  postalCode: '',
+  country: '',
 };
