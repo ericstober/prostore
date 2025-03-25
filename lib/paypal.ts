@@ -1,6 +1,6 @@
 const base = process.env.PAYPAL_API_URL || "https://api-m.sandbox.paypal.com";
 
-export const payal = {
+export const paypal = {
   createOrder: async function createOrder(price: number) {
     const accessToken = await generateAccessToken();
     const url = `${base}/v2/checkout/orders`;
