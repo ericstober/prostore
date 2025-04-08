@@ -6,7 +6,7 @@ import { insertProductSchema, updateProductSchema } from "@/lib/validators";
 import { Product } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { ControllerRenderProps, SubmitErrorHandler, useForm } from "react-hook-form";
+import { ControllerRenderProps, SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import slugify from "slugify";
@@ -14,6 +14,9 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { createProduct, updateProduct } from "@/lib/actions/product.actions";
+import { UploadButton } from "@/lib/uploadthing";
+import { Card, CardContent } from "../ui/card";
+import Image from "next/image";
 
 const ProductForm = ({
   type,
@@ -32,7 +35,7 @@ const ProductForm = ({
     defaultValues: product && type === "Update" ? product : productDefaultValues,
   });
 
-  const onSubmit: SubmitErrorHandler<z.infer<typeof insertProductSchema>> = async (values) => {
+  const onSubmit: SubmitHandler<z.infer<typeof insertProductSchema>> = async (values) => {
     // On Create
     if (type === "Create") {
       const res = await createProduct(values);
@@ -46,7 +49,6 @@ const ProductForm = ({
         toast({
           description: res.message,
         });
-
         router.push("/admin/products");
       }
     }
@@ -69,11 +71,12 @@ const ProductForm = ({
         toast({
           description: res.message,
         });
-
         router.push("/admin/products");
       }
     }
   };
+
+  const images = form.watch("images");
 
   return (
     <Form {...form}>
@@ -185,7 +188,49 @@ const ProductForm = ({
           />
         </div>
 
-        <div className='upload-field flex flex-col md:flex-row gap-5'>{/* Images */}</div>
+        <div className='upload-field flex flex-col md:flex-row gap-5'>
+          {/* Images */}
+          <FormField
+            control={form.control}
+            name='images'
+            render={() => (
+              <FormItem className='w-full'>
+                <FormLabel>Images</FormLabel>
+                <Card>
+                  <CardContent className='space-y-2 mt-2 min-h-48'>
+                    <div className='flex-start space-x-2'>
+                      {images.map((image: string) => (
+                        <Image
+                          key={image}
+                          src={image}
+                          alt='product image'
+                          className='w-20 h-20 object-cover object-center rounded-sm'
+                          width={100}
+                          height={100}
+                        />
+                      ))}
+                      <FormControl>
+                        <UploadButton
+                          endpoint='imageUploader'
+                          onClientUploadComplete={(res: { url: string }[]) => {
+                            form.setValue("images", [...images, res[0].url]);
+                          }}
+                          onUploadError={(error: Error) => {
+                            toast({
+                              variant: "destructive",
+                              description: `ERROR! ${error.message}`,
+                            });
+                          }}
+                        />
+                      </FormControl>
+                    </div>
+                  </CardContent>
+                </Card>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
         <div className='upload-field'>{/* Is featured */}</div>
 
