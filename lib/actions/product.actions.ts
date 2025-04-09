@@ -71,9 +71,15 @@ export async function deleteProduct(id: string) {
 
     revalidatePath("/admin/products");
 
-    return { success: true, message: "Product deleted successfully" };
+    return {
+      success: true,
+      message: "Product deleted successfully",
+    };
   } catch (error) {
-    return { success: false, message: formatError(error) };
+    return {
+      success: false,
+      message: formatError(error),
+    };
   }
 }
 
@@ -85,9 +91,15 @@ export async function createProduct(data: z.infer<typeof insertProductSchema>) {
 
     revalidatePath("/admin/products");
 
-    return { success: true, message: "Product created successfully" };
+    return {
+      success: true,
+      message: "Product created successfully",
+    };
   } catch (error) {
-    return { success: false, message: formatError(error) };
+    return {
+      success: false,
+      message: formatError(error),
+    };
   }
 }
 
@@ -108,8 +120,14 @@ export async function updateProduct(data: z.infer<typeof updateProductSchema>) {
 
     revalidatePath("/admin/products");
 
-    return { success: true, message: "Product updated successfully" };
+    return {
+      success: true,
+      message: "Product updated successfully",
+    };
   } catch (error) {
-    return { success: false, message: formatError(error) };
+    return {
+      success: false,
+      message: formatError(error),
+    };
   }
 }
