@@ -9,6 +9,7 @@ import { formatError } from "@/lib/utils";
 import { ShippingAddress } from "@/types";
 import { z } from "zod";
 import { PAGE_SIZE } from "../constants";
+import { revalidatePath } from "next/cache";
 
 // Sign in the user with credentials
 export async function signInWithCredentials(prevState: unknown, formData: FormData) {
@@ -167,4 +168,17 @@ export async function getAllUsers({ limit = PAGE_SIZE, page }: { limit?: number;
     data,
     totalPages: Math.ceil(dataCount / limit),
   };
+}
+
+// Delete a user
+export async function deleteUser(id: string) {
+  try {
+    await prisma.user.delete({ where: { id } });
+
+    revalidatePath("/admin/users");
+
+    return { sucess: true, message: "User deleted successfully" };
+  } catch (error) {
+    return { success: false, message: formatError(error) };
+  }
 }
