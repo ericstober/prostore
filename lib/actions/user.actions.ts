@@ -21,13 +21,19 @@ export async function signInWithCredentials(prevState: unknown, formData: FormDa
 
     await signIn("credentials", user);
 
-    return { success: true, message: "Signed in successfully" };
+    return {
+      success: true,
+      message: "Signed in successfully",
+    };
   } catch (error) {
     if (isRedirectError(error)) {
       throw error;
     }
 
-    return { success: false, message: "Invalid email or password" };
+    return {
+      success: false,
+      message: "Invalid email or password",
+    };
   }
 }
 
@@ -63,13 +69,19 @@ export async function registerUser(prevState: unknown, formData: FormData) {
       password: plainPassword,
     });
 
-    return { success: true, message: "User registered successfully" };
+    return {
+      success: true,
+      message: "User registered successfully",
+    };
   } catch (error) {
     if (isRedirectError(error)) {
       throw error;
     }
 
-    return { success: false, message: formatError(error) };
+    return {
+      success: false,
+      message: formatError(error),
+    };
   }
 }
 
@@ -101,9 +113,15 @@ export async function updateUserAddress(data: ShippingAddress) {
       data: { address },
     });
 
-    return { success: true, message: "User updated successfully" };
+    return {
+      success: true,
+      message: "User updated successfully",
+    };
   } catch (error) {
-    return { success: false, message: formatError(error) };
+    return {
+      success: false,
+      message: formatError(error),
+    };
   }
 }
 
@@ -124,9 +142,15 @@ export async function updateUserPaymentMethod(data: z.infer<typeof paymentMethod
       data: { paymentMethod: paymentMethod.type },
     });
 
-    return { success: true, message: "User updated successfully" };
+    return {
+      success: true,
+      message: "User updated successfully",
+    };
   } catch (error) {
-    return { success: false, message: formatError(error) };
+    return {
+      success: false,
+      message: formatError(error),
+    };
   }
 }
 
@@ -148,9 +172,15 @@ export async function updateProfile(user: { name: string; email: string }) {
       },
     });
 
-    return { success: true, message: "User updated successfully" };
+    return {
+      success: true,
+      message: "User updated successfully",
+    };
   } catch (error) {
-    return { success: false, message: formatError(error) };
+    return {
+      success: false,
+      message: formatError(error),
+    };
   }
 }
 
@@ -173,12 +203,20 @@ export async function getAllUsers({ limit = PAGE_SIZE, page }: { limit?: number;
 // Delete a user
 export async function deleteUser(id: string) {
   try {
-    await prisma.user.delete({ where: { id } });
+    await prisma.user.delete({
+      where: { id },
+    });
 
     revalidatePath("/admin/users");
 
-    return { sucess: true, message: "User deleted successfully" };
+    return {
+      success: true,
+      message: "User deleted successfully",
+    };
   } catch (error) {
-    return { success: false, message: formatError(error) };
+    return {
+      success: false,
+      message: formatError(error),
+    };
   }
 }
