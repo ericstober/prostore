@@ -16,7 +16,7 @@ const Search = async () => {
           </SelectTrigger>
 
           <SelectContent>
-            <SelectItem key='All' value='All'>
+            <SelectItem key='All' value='all'>
               All
             </SelectItem>
             {categories.map((x) => (
