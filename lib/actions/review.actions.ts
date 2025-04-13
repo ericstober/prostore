@@ -11,7 +11,6 @@ import { revalidatePath } from "next/cache";
 export async function createUpdateReview(data: z.infer<typeof insertReviewSchema>) {
   try {
     const session = await auth();
-
     if (!session) throw new Error("Use is not authenticated");
 
     // Validate & store the view
@@ -75,7 +74,7 @@ export async function createUpdateReview(data: z.infer<typeof insertReviewSchema
     revalidatePath(`/product/${product.slug}`);
 
     return {
-      sucess: true,
+      success: true,
       message: "Review updated successfully",
     };
   } catch (error) {

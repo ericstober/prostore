@@ -39,7 +39,7 @@ export const productDefaultValues = {
   banner: null,
 };
 
-export const reviewFormDefaultVales = {
+export const reviewFormDefaultValues = {
   title: "",
   comment: "",
   rating: 0,
