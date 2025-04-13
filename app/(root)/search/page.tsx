@@ -32,7 +32,7 @@ const sortOrders = ["newest", "lowest", "highest", "rating"];
 
 const SearchPage = async (props: {
   searchParams: Promise<{
-    q?: string;
+    query?: string;
     category?: string;
     price?: string;
     rating?: string;
@@ -41,7 +41,7 @@ const SearchPage = async (props: {
   }>;
 }) => {
   const {
-    q = "all",
+    query = "all",
     category = "all",
     price = "all",
     rating = "all",
@@ -63,7 +63,7 @@ const SearchPage = async (props: {
     sortFilter?: string;
     pageFilter?: string;
   }) => {
-    const params = { q, category, price, rating, sort, page };
+    const params = { query, category, price, rating, sort, page };
 
     if (categoryFilter) params.category = categoryFilter;
     if (priceFilter) params.price = priceFilter;
@@ -75,7 +75,7 @@ const SearchPage = async (props: {
   };
 
   const products = await getAllProducts({
-    query: q,
+    query,
     category,
     price,
     rating,
@@ -158,12 +158,12 @@ const SearchPage = async (props: {
       <div className='md:col-span-4 space-y-4'>
         <div className='flex-between flex-col md:flex-row my-4'>
           <div className='flex items-center'>
-            {q !== "all" && q !== "" && "Query: " + q}
+            {query !== "all" && query !== "" && "Query: " + query}
             {category !== "all" && category !== "" && " Category: " + category}
             {price !== "all" && " Price: " + price}
             {rating !== "all" && " Rating: " + rating + " stars & up"}
             &nbsp;
-            {(q !== "all" && q !== "") ||
+            {(query !== "all" && query !== "") ||
             (category !== "all" && category !== "") ||
             rating !== "all" ||
             price !== "all" ? (

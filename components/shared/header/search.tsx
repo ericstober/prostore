@@ -27,7 +27,7 @@ const Search = async () => {
           </SelectContent>
         </Select>
 
-        <Input name='q' type='text' placeholder='Search...' className='md:w-[100px] lg:w-[300px]' />
+        <Input name='query' type='text' placeholder='Search...' className='md:w-[100px] lg:w-[300px]' />
         <Button>
           <SearchIcon />
         </Button>
