@@ -15,6 +15,8 @@ import {
 import { Order } from "@/types";
 import { formatCurrency } from "@/lib/utils";
 import sampleData from "@/db/sample-data";
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+require("dotenv").config();
 
 PurchaseReceiptEmail.PreviewProps = {
   order: {
