@@ -14,7 +14,7 @@ import { PAGE_SIZE } from "../constants";
 import { Prisma } from "@prisma/client";
 import { sendPurchaseReceipt } from "@/email";
 
-// Creat order & create order items
+// Create order & create order items
 export async function createOrder() {
   try {
     const session = await auth();
