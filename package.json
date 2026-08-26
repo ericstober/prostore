@@ -18,6 +18,7 @@
     "@neondatabase/serverless": "^0.10.4",
     "@paypal/react-paypal-js": "^8.8.2",
     "@prisma/adapter-neon": "^6.2.1",
+    "@prisma/engine": "^1.0.18",
     "@radix-ui/react-alert-dialog": "^1.1.6",
     "@radix-ui/react-checkbox": "^1.1.5",
     "@radix-ui/react-dialog": "^1.1.7",
@@ -31,6 +32,7 @@
     "@stripe/react-stripe-js": "^3.6.0",
     "@stripe/stripe-js": "^7.0.0",
     "@uploadthing/react": "^7.3.0",
+    "approve": "^0.0.12",
     "bcrypt-ts-edge": "^3.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -47,6 +49,7 @@
     "react-hook-form": "^7.54.2",
     "recharts": "^2.15.2",
     "resend": "^4.2.0",
+    "scripts": "^0.1.0",
     "slugify": "^1.6.6",
     "stripe": "^18.0.0",
     "tailwind-merge": "^2.6.0",
@@ -58,7 +61,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@prisma/client": "^6.5.0",
+    "@prisma/client": "^6.19.3",
     "@types/jest": "^29.5.14",
     "@types/node": "^20.17.27",
     "@types/react": "^19",
@@ -75,5 +78,15 @@
     "ts-jest": "^29.3.0",
     "ts-node": "^10.9.2",
     "typescript": "^5"
+  },
+  "allowScripts": {
+    "@prisma/client@6.19.3": true,
+    "@prisma/engine@1.0.18": true,
+    "@prisma/engines@6.5.0": true,
+    "bufferutil@4.0.9": true,
+    "esbuild@0.25.1": true,
+    "fsevents@2.3.3": true,
+    "msgpackr-extract@3.0.3": true,
+    "prisma@6.5.0": true
   }
 }
